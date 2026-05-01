@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>H17 - QR Identity</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+    <h3>Buat QR Nama</h3>
+    <input type="text" id="nama" placeholder="Masukkan Namamu">
+    <button onclick="document.getElementById('qr').innerHTML=''; new QRCode(document.getElementById('qr'), document.getElementById('nama').value)">Generate</button>
+    <div id="qr" style="margin-top:20px;"></div>
+</body>
+</html>

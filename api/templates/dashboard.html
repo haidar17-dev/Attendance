@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>H17 - Dashboard</title>
+    <script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
+</head>
+<body>
+    <h1>Daftar Kehadiran Real-time</h1>
+    <ul id="log"></ul>
+    <script>
+        // Inisialisasi Pusher
+        const pusher = new Pusher('0d2bad661ad218a07eee', { cluster: 'ap1' });
+        const channel = pusher.subscribe('h17-channel');
+
+        channel.bind('absen-hadir', function(data) {
+            const li = document.createElement('li');
+            li.innerText = data.nama + " baru saja hadir.";
+            document.getElementById('log').prepend(li);
+        });
+    </script>
+</body>
+</html>
