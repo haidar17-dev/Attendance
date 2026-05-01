@@ -34,3 +34,6 @@ def api_absen():
         pusher_client.trigger('h17-channel', 'absen-hadir', {'nama': nama})
         return jsonify({"status": "success", "msg": f"{nama} tercatat!"})
     return jsonify({"status": "error"}), 400
+
+if __name__ == "__main__":
+    app.run(debug=True)
