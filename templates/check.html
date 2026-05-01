@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>H17 - Admin Scan</title>
+    <script src="https://unpkg.com/html5-qrcode"></script>
+</head>
+<body>
+    <div id="reader" style="width:300px;"></div>
+    <h2 id="status">Siap Scan...</h2>
+
+    <script>
+        const scanner = new Html5Qrcode("reader");
+        
+        scanner.start({ facingMode: "environment" }, { fps: 10, qrbox: 250 }, (txt) => {
+            scanner.pause(true);
+            fetch('/api/absen', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ nama: txt })
+            })
+            .then(res => res.json())
+            .then(data => {
+                document.getElementById('status').innerText = data.msg;
+                setTimeout(() => scanner.resume(), 2000); // Mulai scan lagi setelah 2 detik
+            });
+        });
+    </script>
+</body>
+</html>

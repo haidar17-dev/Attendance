@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>H17 - QR Siswa</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+    <input type="text" id="inputNama" placeholder="Nama Anda...">
+    <button onclick="new QRCode(document.getElementById('qr'), document.getElementById('inputNama').value)">Buat QR</button>
+    <div id="qr" style="margin-top:20px;"></div>
+</body>
+</html>
